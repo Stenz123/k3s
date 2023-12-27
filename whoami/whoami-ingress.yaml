@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`whoami.stenz.dev`)
+    kind: Rule
+    services:
+    - name: whoami
+      port: 5678
+  tls:
+    certResolver: default
