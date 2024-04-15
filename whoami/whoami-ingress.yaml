@@ -1,15 +1,24 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: whoami
+  name: whoami-tls-ingress
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
 spec:
-  entryPoints:
-    - websecure
-  routes:
-  - match: Host(`whoami.stenz.dev`)
-    kind: Rule
-    services:
-    - name: whoami
-      port: 5678
+  rules:
+    - host: whoami.stenz.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: whoami
+                port:
+                  number: 5678
   tls:
-    secretName: stenz-dev-tls
+    - secretName: whoami-tls
+      hosts:
+        - whoami.stenz.dev
