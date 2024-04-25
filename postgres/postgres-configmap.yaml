@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-secret
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: ps_db
+  POSTGRES_USER: admin
+  POSTGRES_PASSWORD: mQw1XbLam#TBBYAj1x%OVHs<}Jp|6A9'3uP|UENb>>iT/)jiO\.p:Q=6AkV,`w70HYu4x
