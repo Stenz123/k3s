@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: wakapi
 
 resources:
-- postgres-cluster.yml
+- postgres-cluster.yaml
 
 helmCharts:
 - name: wakapi
