@@ -1,55 +1,115 @@
 database:
   type: postgresql
-  # Enable DB Write-Ahead-Log for SQLite, disabled for other databases. https://github.com/dani-garcia/vaultwarden/wiki/Running-without-WAL-enabled
   wal: true
   url: wakapi-postgres-rw.wakapi.svc.cluster.local
   existingSecret: vaultwarden-postgres-app
-  existingSecretKey: uri
 vaultwarden:
   allowSignups: true
   verifySignup: false
   requireEmail: false
   allowInvitation: true
-  invitationExpiration: 120
-  passwordHintsAllowed: true
-  # Enable Websockets for notification. https://github.com/dani-garcia/vaultwarden/wiki/Enabling-WebSocket-notifications
-  # Redirect HTTP path "/notifications/hub" to port 3012. Ingress/IngressRoute controllers are automatically configured.
+  showPasswordHint: false
   enableWebsockets: true
   enableWebVault: true
   enableSends: true
   orgCreationUsers: all
+
   admin:
-    enabled: true
+    enabled: false
     disableAdminToken: false
   
   emergency:
-    # Allow any user to enable emergency access.
     enabled: true
-    ## Schedule to send expiration reminders to emergency access grantors. Cron schedule format.
-    #reminder: "0 3 * * * *"
-    ## Schedule to grant emergency access requests that have met the required wait time. Cron schedule format.
-    #timeout: "0 3 * * * *"
+
+  smtp:
+    enabled: false
+    host: ""
+    from: ""
+    security: starttls
+
+  yubico:
+    enabled: false
+
+  log:
+    file: ""
+    level: ""
+
+  icons:
+    disableDownload: false
+
+  push:
+    enabled: false
 
 service:
   type: ClusterIP
   httpPort: 80
   websocketPort: 3012
   externalTrafficPolicy: Cluster
-  # loadBalancerIP:
   nodePorts:
-    # Choose NodePorts manually
     http: ""
     websocket: ""
 
 ingress:
-  enabled: true
-  annotations:
-    traefik.ingress.kubernetes.io/router.tls: 'true'
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
-  hosts:
-    - host: vaultwarden.stenz.dev
-      paths:
-        - '/'
-  tls:
-    - secretName: vaultwarden-tls
+  enabled: false
+  host: ""
+  annotations: {}
+  tls: []
+
+ingressRoute:
+  enabled: false
+  newCRD: false
+  host: ""
+  entrypoints:
+    - websecure
+  middlewares: {}
+  tls: {}
+
+persistence:
+  enabled: false
+  size: 1Gi
+  accessMode: ReadWriteOnce
+
+
+customVolume: {}
+
+
+image:
+  pullPolicy: IfNotPresent
+  repository: vaultwarden/server
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+deploymentAnnotations: {}
+probes: {}
+
+sidecars: []
+
+podSecurityContext:
+  fsGroup: 65534
+
+securityContext:
+  runAsUser: 65534
+  runAsGroup: 65534
+
+strategy: {}
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
