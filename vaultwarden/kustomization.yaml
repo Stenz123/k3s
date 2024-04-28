@@ -8,7 +8,7 @@ resources:
 
 helmCharts:
 - name: vaultwarden
-  releaseName: vaultwardenrs
+  releaseName: vaultwarden
   repo: https://gissilabs.github.io/charts/
   valuesFile: vaultwarden.values.yaml
   version: 1.30.5
