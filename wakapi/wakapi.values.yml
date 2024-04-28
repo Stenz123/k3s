@@ -16,6 +16,19 @@ wakapi_config:
     password_secret:
       enabled: true
       name: wakapi-postgres-app
+  mail:
+    enabled: true
+    sender: Wakapi <wakapi@smtp.stenz.dev>
+    smtp:
+      host: live.smtp.mailtrap.io
+      port: 587
+      # STARTTLS is used instead which requires you to set this to false..
+      tls: false
+      username: api
+      password_secret:
+        enabled: true
+        name: wakapi-smtp
+
 ingress:
   enabled: true
   annotations:
