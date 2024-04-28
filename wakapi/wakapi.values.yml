@@ -16,6 +16,8 @@ wakapi_config:
     password_secret:
       enabled: true
       name: wakapi-postgres-app
+  security:
+    allow_signup: false
  #mail:
  #  enabled: true
  #  sender: Wakapi <wakapi@smtp.stenz.dev>
