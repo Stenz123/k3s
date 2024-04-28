@@ -25,10 +25,7 @@ wakapi_config:
       # STARTTLS is used instead which requires you to set this to false..
       tls: false
       username: api
-      password_secret:
-        enabled: true
-        name: wakapi-smtp
-
+      password: "1234566789"
 ingress:
   enabled: true
   annotations:
