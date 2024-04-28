@@ -6,9 +6,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Stenz123/k3s/
+    repoURL: https://github.com/gissilabs/charts
     path: vaultwarden
-    targetRevision: HEAD
+    targetRevision: 1.30.5
+    chart: gissilabs/vaultwarden
+    helm:
+      releaseName: gissilabs/vaultwarden
+      valueFiles:
+      - vaultwarden.values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
