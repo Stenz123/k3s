@@ -1,1 +1,2 @@
 cert-manager/cloudflare-token-secret.yaml
+keycloak/keycloak-secret.yaml
