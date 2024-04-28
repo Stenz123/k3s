@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: keycloak
+  namespace: keycloak
   labels:
     app: keycloak
 spec:
@@ -17,6 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: keycloak
+  namespace: keycloak
   labels:
     app: keycloak
 spec:
@@ -37,7 +39,10 @@ spec:
             - name: KEYCLOAK_ADMIN
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "admin"
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-secret
+                  key: KEYCLOAK_ADMIN_PW
             - name: KC_PROXY
               value: "edge"
             - name: KC_HEALTH_ENABLED
@@ -53,20 +58,23 @@ spec:
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-credentials
-                  key: POSTGRES_DB
+                  name: keycloak-postgres-app
+                  key: dbname
             - name: KC_DB_URL
-              value: jdbc:postgresql://postgres/$(POSTGRES_DB)
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-postgres-app
+                  key: jdbc-uri
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-credentials
-                  key: POSTGRES_USER
+                  name: keycloak-postgres-app
+                  key: user
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-credentials
-                  key: POSTGRES_PASSWORD
+                  name: keycloak-postgres-app
+                  key: password
           ports:
             - name: http
               containerPort: 8080
@@ -79,6 +87,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: keycloak
+  namespace: keycloak
   annotations:
     spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: letsencrypt-prod

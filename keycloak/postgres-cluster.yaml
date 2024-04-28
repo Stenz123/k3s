@@ -1,0 +1,46 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: keycloak-postgres-cluster
+  namespace: keycloak
+spec:
+  teamId: keycloak
+  volume:
+    size: 200Mi
+  numberOfInstances: 0
+  users:
+    keycloak:
+    - superuser
+    - createdb
+  databases:
+    keycloak: keycloak
+  postgresql:
+    version: "15"
+    parameters:
+      listen: "*"
+      max_wal_senders: "5"
+      unix_socket_directories: "/var/run/postgresql/"
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: keycloak-postgres
+  namespace: keycloak
+spec:
+  instances: 2
+
+  imageName: ghcr.io/cloudnative-pg/postgresql:15
+
+  bootstrap:
+    initdb:
+      database: keycloak
+      owner: keycloak
+
+  postgresql:
+    pg_hba:
+      - local all all trust
+      - host all all 127.0.0.1/32 trust
+      - host all all ::1/128 trust
+
+  storage:
+    size: 2Gi
