@@ -1,0 +1,27 @@
+persistence:
+  enabled: false
+
+image:
+  tag: 2.11.1
+
+wakapi_config:
+  env: production
+  db:
+    dialect: postgres
+    host: wakapi-postgres-rw.wakapi.svc.cluster.local
+    port: 5432
+    name: wakapi
+    user: wakapi
+    ssl: true
+    password_secret:
+      enabled: true
+      name: wakapi-postgres-app
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: 'true'
+  hosts:
+    - host: wakapi.stenz.dev
+      paths:
+        - '/'

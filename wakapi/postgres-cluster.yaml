@@ -1,0 +1,46 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: wakapi-postgres-cluster
+  namespace: wakapi
+spec:
+  teamId: wakapi
+  volume:
+    size: 200Mi
+  numberOfInstances: 0
+  users:
+    wakapi:
+    - superuser
+    - createdb
+  databases:
+    wakapi: wakapi
+  postgresql:
+    version: "15"
+    parameters:
+      listen: "*"
+      max_wal_senders: "5"
+      unix_socket_directories: "/var/run/postgresql/"
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: wakapi-postgres
+  namespace: wakapi
+spec:
+  instances: 2
+
+  imageName: ghcr.io/cloudnative-pg/postgresql:15
+
+  bootstrap:
+    initdb:
+      database: wakapi
+      owner: wakapi
+
+  postgresql:
+    pg_hba:
+      - local all all trust
+      - host all all 127.0.0.1/32 trust
+      - host all all ::1/128 trust
+
+  storage:
+    size: 2Gi
