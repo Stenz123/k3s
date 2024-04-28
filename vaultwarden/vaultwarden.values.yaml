@@ -1,0 +1,56 @@
+database:
+  type: postgresql
+  # Enable DB Write-Ahead-Log for SQLite, disabled for other databases. https://github.com/dani-garcia/vaultwarden/wiki/Running-without-WAL-enabled
+  wal: true
+  url: wakapi-postgres-rw.wakapi.svc.cluster.local
+  existingSecret: vaultwarden-postgres-app
+  existingSecretKey: uri
+vaultwarden:
+  allowSignups: true
+  verifySignup: false
+  requireEmail: false
+  allowInvitation: true
+  invitationExpiration: 120
+  passwordHintsAllowed: true
+  # Enable Websockets for notification. https://github.com/dani-garcia/vaultwarden/wiki/Enabling-WebSocket-notifications
+  # Redirect HTTP path "/notifications/hub" to port 3012. Ingress/IngressRoute controllers are automatically configured.
+  enableWebsockets: true
+  enableWebVault: true
+  enableSends: true
+  orgCreationUsers: all
+  admin:
+    enabled: true
+    disableAdminToken: false
+  
+  emergency:
+    # Allow any user to enable emergency access.
+    enabled: true
+    ## Schedule to send expiration reminders to emergency access grantors. Cron schedule format.
+    #reminder: "0 3 * * * *"
+    ## Schedule to grant emergency access requests that have met the required wait time. Cron schedule format.
+    #timeout: "0 3 * * * *"
+
+service:
+  type: ClusterIP
+  httpPort: 80
+  websocketPort: 3012
+  externalTrafficPolicy: Cluster
+  # loadBalancerIP:
+  nodePorts:
+    # Choose NodePorts manually
+    http: ""
+    websocket: ""
+
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: 'true'
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  hosts:
+    - host: vaultwarden.stenz.dev
+      paths:
+        - '/'
+  tls:
+    - secretName: vaultwarden-tls
+      hosts:

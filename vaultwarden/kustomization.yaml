@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: vaultwarden
+
+resources:
+- postgres-cluster.yaml
+
+helmCharts:
+- name: vaultwarden
+  releaseName: gissilabs/vaultwardenrs
+  repo: https://gissilabs.github.io/charts/
+  valuesFile: vaultwarden.values.yaml
+  version: 1.30.5
