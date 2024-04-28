@@ -37,6 +37,6 @@ ingress:
       paths:
         - '/'
   tls:
-    - secretName: whoami-tls
+    - secretName: wakapi-tls
       hosts:
-        - whoami.stenz.dev
+        - wakapi.stenz.dev
