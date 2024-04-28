@@ -29,9 +29,14 @@ wakapi_config:
 ingress:
   enabled: true
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: 'true'
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
   hosts:
     - host: wakapi.stenz.dev
       paths:
         - '/'
+  tls:
+    - secretName: whoami-tls
+      hosts:
+        - whoami.stenz.dev
