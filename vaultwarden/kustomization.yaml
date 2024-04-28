@@ -9,6 +9,6 @@ resources:
 helmCharts:
 - name: vaultwarden
   releaseName: gissilabs/vaultwardenrs
-  repo: https://gissilabs.github.io/charts/
+  repo: https://gissilabs.github.io/charts/gissilabs/vaultwarden
   valuesFile: vaultwarden.values.yaml
-  version: gissilabs/bitwardenrs/1.30.5
+  version: 1.30.5
