@@ -53,4 +53,4 @@ ingress:
         - '/'
   tls:
     - secretName: vaultwarden-tls
-      hosts:
+      hosts: vaultwarden.stenz.dev
