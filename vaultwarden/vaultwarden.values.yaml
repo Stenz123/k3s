@@ -3,6 +3,7 @@ database:
   wal: true
   url: wakapi-postgres-rw.wakapi.svc.cluster.local
   existingSecret: vaultwarden-postgres-app
+  existingSecretKey: uri
 vaultwarden:
   allowSignups: true
   verifySignup: false
