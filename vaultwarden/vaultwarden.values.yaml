@@ -70,6 +70,7 @@ ingressRoute:
   middlewares: {}
   tls:
     secretName: vaultwarden-tls
+    certResolver: letsencrypt-prod
 
 persistence:
   enabled: false
