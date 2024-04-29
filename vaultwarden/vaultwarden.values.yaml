@@ -51,9 +51,10 @@ service:
     websocket: ""
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
     traefik.ingress.kubernetes.io/router.tls: 'true'
+    spec.ingressClassName: traefik
     cert-manager.io/cluster-issuer: letsencrypt-prod
     traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
   host: vaultwarden.stenz.dev
@@ -62,8 +63,8 @@ ingress:
       hosts:
         - vaultwarden.stenz.dev
 ingressRoute:
-  enabled: true
-  newCRD: true
+  enabled: false
+  newCRD: false
   host: "vaultwarden.stenz.dev"
   entrypoints:
     - websecure
@@ -71,6 +72,7 @@ ingressRoute:
   tls:
     secretName: vaultwarden-tls
     certResolver: letsencrypt
+RD: true
 
 persistence:
   enabled: false
