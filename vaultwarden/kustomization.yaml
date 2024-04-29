@@ -5,6 +5,7 @@ namespace: vaultwarden
 
 resources:
 - postgres-cluster.yaml
+- vaultwarde-cert.yaml
 
 helmCharts:
 - name: vaultwarden

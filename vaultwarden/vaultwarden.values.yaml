@@ -51,7 +51,7 @@ service:
     websocket: ""
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     traefik.ingress.kubernetes.io/router.tls: 'true'
     spec.ingressClassName: traefik
@@ -63,16 +63,14 @@ ingress:
       hosts:
         - vaultwarden.stenz.dev
 ingressRoute:
-  enabled: false
-  newCRD: false
+  enabled: true
+  newCRD: true
   host: "vaultwarden.stenz.dev"
   entrypoints:
     - websecure
   middlewares: {}
   tls:
     secretName: vaultwarden-tls
-    certResolver: letsencrypt
-RD: true
 
 persistence:
   enabled: false
