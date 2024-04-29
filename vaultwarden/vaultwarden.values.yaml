@@ -1,7 +1,7 @@
 database:
   type: postgresql
   wal: true
-  url: wakapi-postgres-rw.wakapi.svc.cluster.local
+  url: vaultwarden-postgres-rw.vaultwarden.svc.cluster.local
   existingSecret: vaultwarden-postgres-app
   existingSecretKey: uri
 vaultwarden:
@@ -51,11 +51,19 @@ service:
     websocket: ""
 
 ingress:
-  enabled: false
-  host: ""
-  annotations: {}
-  tls: []
-
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: 'true'
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  hosts:
+    - host: vaultwarden.stenz.dev
+      paths:
+        - '/'
+  tls:
+    - secretName: vaultwarden-tls
+      hosts:
+        - vaultwarden.stenz.dev
 ingressRoute:
   enabled: false
   newCRD: false
