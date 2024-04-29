@@ -37,4 +37,4 @@ ingressRoute:
   middlewares: {}
   tls:
     secretName: vaultwarden-tls
-replicaCount: 3
+replicaCount: 1
