@@ -36,5 +36,5 @@ ingressRoute:
     - websecure
   middlewares: {}
   tls:
-
+    secretName: vaultwarden-tls
 replicaCount: 1
