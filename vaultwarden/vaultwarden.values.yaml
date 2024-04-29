@@ -16,31 +16,9 @@ vaultwarden:
   orgCreationUsers: all
 
   admin:
-    enabled: false
+    enabled: true
     disableAdminToken: false
   
-  emergency:
-    enabled: true
-
-  smtp:
-    enabled: false
-    host: ""
-    from: ""
-    security: starttls
-
-  yubico:
-    enabled: false
-
-  log:
-    file: ""
-    level: ""
-
-  icons:
-    disableDownload: false
-
-  push:
-    enabled: false
-
 service:
   type: ClusterIP
   httpPort: 80
@@ -58,54 +36,5 @@ ingressRoute:
     - websecure
   middlewares: {}
   tls:
-    secretName: vaultwarden-tls
-
-persistence:
-  enabled: false
-  size: 1Gi
-  accessMode: ReadWriteOnce
-
-
-customVolume: {}
-
-
-image:
-  pullPolicy: IfNotPresent
-  repository: vaultwarden/server
-  tag: ""
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
 
 replicaCount: 1
-
-serviceAccount:
-  create: false
-  annotations: {}
-  name: ""
-
-podAnnotations: {}
-podLabels: {}
-
-deploymentAnnotations: {}
-probes: {}
-
-sidecars: []
-
-podSecurityContext:
-  fsGroup: 65534
-
-securityContext:
-  runAsUser: 65534
-  runAsGroup: 65534
-
-strategy: {}
-
-resources: {}
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
