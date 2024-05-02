@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Stenz123/k3s/
-    path: postgres-operator
+    repoURL: https://github.com/zalando/postgres-operator
+    path: manifests
     targetRevision: HEAD
   destination:
     server: "https://kubernetes.default.svc"
