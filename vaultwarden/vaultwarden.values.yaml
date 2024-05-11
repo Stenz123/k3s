@@ -5,7 +5,7 @@ database:
   existingSecret: vaultwarden-postgres-app
   existingSecretKey: uri
 vaultwarden:
-  allowSignups: false
+  allowSignups: true
   verifySignup: false
   requireEmail: false
   allowInvitation: true
