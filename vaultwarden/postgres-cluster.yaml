@@ -1,26 +1,3 @@
-apiVersion: "acid.zalan.do/v1"
-kind: postgresql
-metadata:
-  name: vaultwarden-postgres-cluster
-  namespace: vaultwarden
-spec:
-  teamId: vaultwarden
-  volume:
-    size: 200Mi
-  numberOfInstances: 0
-  users:
-    vaultwarden:
-    - superuser
-    - createdb
-  databases:
-    vaultwarden: vaultwarden
-  postgresql:
-    version: "15"
-    parameters:
-      listen: "*"
-      max_wal_senders: "5"
-      unix_socket_directories: "/var/run/postgresql/"
----
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
