@@ -1,5 +1,4 @@
 image:
-  registry: docker.io
   repository: jonizen/postgres-operator-arm64
   pullPolicy: "IfNotPresent"
 
