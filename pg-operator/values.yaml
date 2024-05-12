@@ -1,5 +1,7 @@
 image:
+  registry: docker.io
   repository: jonizen/postgres-operator-arm64
+  tag: v1.10.0-dirty
   pullPolicy: "IfNotPresent"
 
 # Optionally specify an array of imagePullSecrets.
