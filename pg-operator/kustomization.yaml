@@ -10,5 +10,5 @@ helmCharts:
 - name: postgres-operator
   releaseName: postgres-operator
   repo: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
-  valuesFile: values.yml
+  valuesFile: values.yaml
   version: 1.11.0
