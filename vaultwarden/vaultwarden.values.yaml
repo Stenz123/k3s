@@ -1,7 +1,6 @@
 database:
   type: postgresql
   wal: true
-  url: vaultwarden-postgres-rw.vaultwarden.svc.cluster.local
   existingSecret: vaultwarden-postgres-app
   existingSecretKey: uri
 vaultwarden:
