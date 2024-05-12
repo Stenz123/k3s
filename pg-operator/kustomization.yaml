@@ -3,8 +3,8 @@ kind: Kustomization
 
 namespace: default
 
-#resources:
-#- postgres-cluster.yaml
+resources:
+- https://raw.githubusercontent.com/zalando/postgres-operator/master/manifests/operatorconfiguration.crd.yaml
 
 helmCharts:
 - name: postgres-operator
