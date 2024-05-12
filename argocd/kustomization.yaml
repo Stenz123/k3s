@@ -28,4 +28,4 @@ patches:
       metadata:
         name: argocd-cm
       data:
-        kustomize.buildOptions: --enable-helm --wait
+        kustomize.buildOptions: --enable-helm
