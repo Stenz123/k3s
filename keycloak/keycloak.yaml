@@ -58,16 +58,16 @@ spec:
             - name: POSTGRES_DB
               value: keycloak
             - name: KC_DB_URL
-              value: jdbc:postgresql://keycloak-postgres.svc.cluster.local:5432/
+              value: "jdbc:postgresql://10.43.47.198:5432/keycloak"
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-user.keycloak-postgres.credentials.postgresql.acid.zalan.do
+                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
                   key: username
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-user.keycloak-postgres.credentials.postgresql.acid.zalan.do
+                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
                   key: password
           ports:
             - name: http
