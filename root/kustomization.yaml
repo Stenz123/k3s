@@ -3,4 +3,3 @@ kind: Kustomization
 
 resources:
 - namespaces.yaml
-- https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.4/installers/kubectl/postgres-operator.yml
