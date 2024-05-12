@@ -3,9 +3,3 @@ image:
   repository: jonizen/postgres-operator-arm64
   tag: v1.10.0-dirty
   pullPolicy: "IfNotPresent"
-
-configUsers:
-  super_username: postgres
-
-configMajorVersionUpgrade:
-  target_major_version: "15"
