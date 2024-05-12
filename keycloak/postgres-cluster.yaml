@@ -1,28 +1,21 @@
-apiVersion: postgres-operator.crunchydata.com/v1beta1
-kind: PostgresCluster
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
 metadata:
-  name: postgres-keycloak
+  name: keycloak-postgres
   namespace: keycloak
 spec:
-  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.2-0
-  postgresVersion: 15
-  instances:
-    - name: instance1
-      dataVolumeClaimSpec:
-        accessModes:
-        - "ReadWriteOnce"
-        resources:
-          requests:
-            storage: 1Gi
-  backups:
-    pgbackrest:
-      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
-      repos:
-      - name: repo1
-        volume:
-          volumeClaimSpec:
-            accessModes:
-            - "ReadWriteOnce"
-            resources:
-              requests:
-                storage: 1Gi
+  teamId: "acid"
+  volume:
+    size: 1Gi
+  numberOfInstances: 2
+  users:
+    keycloak:  # database owner
+    - superuser
+    - createdb
+    keycloak_user: []  # role for application keycloak
+  databases:
+    keycloak: keycloak  # dbname: owner
+  preparedDatabases:
+    bar: {}
+  postgresql:
+    version: "15"

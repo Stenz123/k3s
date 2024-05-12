@@ -56,24 +56,18 @@ spec:
             - name: KC_DB
               value: postgres
             - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: keycloak-postgres-app
-                  key: dbname
+              value: keycloak
             - name: KC_DB_URL
-              valueFrom:
-                secretKeyRef:
-                  name: keycloak-postgres-app
-                  key: jdbc-uri
+              value: dbc:postgresql://keycloak-postgres:5432
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-postgres-app
-                  key: user
+                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
+                  key: username
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: keycloak-postgres-app
+                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
                   key: password
           ports:
             - name: http
