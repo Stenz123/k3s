@@ -3,5 +3,4 @@ kind: Kustomization
 
 resources:
 - namespaces.yaml
-# Cloudnative Postgres
-- https://github.com/cloudnative-pg/cloudnative-pg/releases/download/v1.23.1/cnpg-1.23.1.yaml
+- https://raw.githubusercontent.com/CrunchyData/postgres-operator/v4.7.4/installers/kubectl/postgres-operator.yml

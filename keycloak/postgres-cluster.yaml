@@ -1,23 +1,28 @@
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
 metadata:
-  name: keycloak-postgres
+  name: postgres-keycloak
   namespace: keycloak
 spec:
-  instances: 2
-
-  imageName: ghcr.io/cloudnative-pg/postgresql:15
-
-  bootstrap:
-    initdb:
-      database: keycloak
-      owner: keycloak
-
-  postgresql:
-    pg_hba:
-      - local all all trust
-      - host all all 127.0.0.1/32 trust
-      - host all all ::1/128 trust
-
-  storage:
-    size: 2Gi
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-16.2-0
+  postgresVersion: 15
+  instances:
+    - name: instance1
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 1Gi
+  backups:
+    pgbackrest:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgbackrest:ubi8-2.49-0
+      repos:
+      - name: repo1
+        volume:
+          volumeClaimSpec:
+            accessModes:
+            - "ReadWriteOnce"
+            resources:
+              requests:
+                storage: 1Gi
