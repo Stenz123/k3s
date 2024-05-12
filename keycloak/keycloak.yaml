@@ -62,12 +62,12 @@ spec:
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
+                  name: keycloak-user.keycloak-postgres.credentials.postgresql.acid.zalan.do
                   key: username
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
+                  name: keycloak-user.keycloak-postgres.credentials.postgresql.acid.zalan.do
                   key: password
           ports:
             - name: http
