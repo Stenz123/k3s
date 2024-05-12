@@ -7,7 +7,7 @@ namespace: wakapi
 #- postgres-cluster.yaml
 
 helmCharts:
-- name: postgres-operator-charts
+- name: postgres-operator
   releaseName: postgres-operator
   repo: https://opensource.zalando.com/postgres-operator/charts/postgres-operator
   valuesFile: values.yml
