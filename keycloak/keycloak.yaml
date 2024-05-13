@@ -59,7 +59,7 @@ spec:
               value: keycloak
             - name: KC_DB_URL
             # jdbc:postgresql://keycloak-postgres.keycloak.svc.cluster.local:5432/    keycloak
-              value: "jdbc:postgresql://10.43.47.198:5432/keycloak"
+              value: "jdbc:postgresql://keycloak-postgres.keycloak.svc.cluster.local:5432/keycloak"
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
