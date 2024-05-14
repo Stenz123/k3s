@@ -77,6 +77,27 @@ spec:
             httpGet:
               path: /realms/master
               port: 8080
+                          port: 8080
+           volumeMounts:
+             - mountPath: /opt/jboss/keycloak/themes/my_custom_theme
+               name: shared-volume
+
+           initContainers:
+             - name: init-customtheme
+               image: busybox:1.28
+               command: ['sh', '-c', 'cp -rL /CustomTheme/custom_theme.tar /shared && cd /shared/ && tar -xvf custom_theme.tar && rm -rf custom_theme.tar']
+               volumeMounts:
+               - mountPath: /shared
+                 name: shared-volume
+               - mountPath: /CustomTheme
+                 name: theme-volume
+
+           volumes:
+           - name: shared-volume
+             emptyDir: {}
+           - name: theme-volume
+             configMap:
+               name: customthemes-configmap
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
