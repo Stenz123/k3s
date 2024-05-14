@@ -1,4 +1,4 @@
- piVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: keycloak
@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: stenzm/luminai-keycloak:v1.0
+          image: stenzm/luminai-keycloak:3
           args: ["start-dev"]
           env:
             - name: KEYCLOAK_ADMIN
@@ -58,6 +58,7 @@ spec:
             - name: POSTGRES_DB
               value: keycloak
             - name: KC_DB_URL
+            # jdbc:postgresql://keycloak-postgres.keycloak.svc.cluster.local:5432/    keycloak
               value: "jdbc:postgresql://10.43.47.198:5432/keycloak"
             - name: KC_DB_USERNAME
               valueFrom:
@@ -76,24 +77,6 @@ spec:
             httpGet:
               path: /realms/master
               port: 8080
-          volumeMounts:
-            - mountPath: /opt/jboss/keycloak/themes/my_custom_theme
-              name: shared-volume
-      initContainers:
-        - name: init-customtheme
-          image: busybox:1.28
-          command: ['sh', '-c', 'cp -rL /CustomTheme/custom_theme.tar /shared && cd /shared/ && tar -xvf custom_theme.tar && rm -rf custom_theme.tar']
-          volumeMounts:
-            - mountPath: /shared
-              name: shared-volume
-            - mountPath: /CustomTheme
-              name: theme-volume
-      volumes:
-        - name: shared-volume
-          emptyDir: {}
-        - name: theme-volume
-          configMap:
-            name: customthemes-configmap
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
