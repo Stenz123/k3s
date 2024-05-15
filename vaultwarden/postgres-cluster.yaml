@@ -1,23 +1,21 @@
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
 metadata:
   name: vaultwarden-postgres
   namespace: vaultwarden
 spec:
-  instances: 2
-
-  imageName: ghcr.io/cloudnative-pg/postgresql:15
-
-  bootstrap:
-    initdb:
-      database: vaultwarden
-      owner: vaultwarden
-
+  teamId: "acid"
+  volume:
+    size: 1Gi
+  numberOfInstances: 2
+  users:
+    vaultwarden:  # database owner
+    - superuser
+    - createdb
+    vaultwarden_user: []  # role for application vaultwarden
+  databases:
+    vaultwarden: vaultwarden  # dbname: owner
+  preparedDatabases:
+    bar: {}
   postgresql:
-    pg_hba:
-      - local all all trust
-      - host all all 127.0.0.1/32 trust
-      - host all all ::1/128 trust
-
-  storage:
-    size: 2Gi
+    version: "15"

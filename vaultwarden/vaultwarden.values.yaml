@@ -1,8 +1,7 @@
 database:
   type: postgresql
   wal: true
-  existingSecret: vaultwarden-postgres-app
-  existingSecretKey: uri
+  url: "postgresql://vaultwarden:JbCqell1qbU57ohrR2yitIE3L7hHuAotArjtRgHB7cZKIGS3REKfLVWhSjVggvLr@luminai-postgres:5432/vaultwarden"
 vaultwarden:
   allowSignups: false
   verifySignup: false
