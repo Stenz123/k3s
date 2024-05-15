@@ -1,7 +1,7 @@
 database:
   type: postgresql
   wal: true
-  url: "postgresql://vaultwarden:JbCqell1qbU57ohrR2yitIE3L7hHuAotArjtRgHB7cZKIGS3REKfLVWhSjVggvLr@10.43.170.141:5432/vaultwarden"
+  url: "postgresql://vaultwarden:SmJDcWVsbDFxYlU1N29oclIyeWl0SUUzTDdoSHVBb3RBcmp0UmdIQjdjWktJR1MzUkVLZkxWV2hTalZnZ3ZMcg==@10.43.170.141:5432/vaultwarden"
 vaultwarden:
   allowSignups: false
   verifySignup: false
