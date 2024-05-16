@@ -1,7 +1,9 @@
 database:
   type: postgresql
   wal: true
-  url: "postgresql://vaultwarden:eFinog3qr8W1oMvUj86bW73qcyZ8BS58zNhR8UUMWjvLoZ7KXFG8rGFXIo032gvT@10.43.207.97:5432/vaultwarden?sslmode=allow"
+  url: vaultwarden-postgres-rw.vaultwarden.svc.cluster.local
+  existingSecret: vaultwarden-postgres-app
+  existingSecretKey: uri
 vaultwarden:
   allowSignups: false
   verifySignup: false
