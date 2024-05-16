@@ -22,9 +22,11 @@ spec:
       encoding: "UTF8"
       locale: "en_US.UTF-8"
       data-checksums: "true"
-    pg_hba:
-    - host all all 0.0.0.0/0 md5
-    - hostssl all all 0.0.0.0/0 md5
-    - host all all 10.42.0.0/16 md5
-    - hostssl all all 10.42.0.0/16 md5
-
+      #    pg_hba:
+      #    - host all all 0.0.0.0/0 md5
+      #    - hostssl all all 0.0.0.0/0 md5
+      #    - local all all md5
+      #    - hostssl all all all md5
+      #    - host all all 10.42.0.0/16 md5
+      #    - hostssl all all 10.42.0.0/16 md5
+      #
