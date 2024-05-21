@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: stenzm/luminai-keycloak:3
+          image: quay.io/keycloak/keycloak:24.0.2
           args: ["start-dev"]
           env:
             - name: KEYCLOAK_ADMIN
@@ -56,19 +56,24 @@ spec:
             - name: KC_DB
               value: postgres
             - name: POSTGRES_DB
-              value: keycloak
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-postgres-app
+                  key: dbname
             - name: KC_DB_URL
-            # jdbc:postgresql://keycloak-postgres.keycloak.svc.cluster.local:5432/    keycloak
-              value: "jdbc:postgresql://10.43.47.198:5432/keycloak"
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-postgres-app
+                  key: jdbc-uri
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
-                  key: username
+                  name: keycloak-postgres-app
+                  key: user
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: keycloak.keycloak-postgres.credentials.postgresql.acid.zalan.do
+                  name: keycloak-postgres-app
                   key: password
           ports:
             - name: http
