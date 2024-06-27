@@ -11,6 +11,9 @@ spec:
     repoURL: https://github.com/Stenz123/k3s/
     path: vaultwarden
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
