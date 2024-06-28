@@ -12,8 +12,7 @@ spec:
     path: vaultwarden
     targetRevision: HEAD
   syncPolicy:
-    syncOptions:
-    - ApplyOutOfSyncOnly=true
+    automated: {}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: default
