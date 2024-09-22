@@ -17,22 +17,22 @@ spec:
         - name: alex-brot-backend
           image: ghcr.io/alex-brot/alex-brot-backend:v0.0.2
           imagePullPolicy: Always
-      env:
-        - name: JDBC_URL
-          valueFrom:
-            secretKeyRef:
-              key: jdbc-uri
-              name: alex-brot-postgres-app
-        - name: DATABASE_USER
-          valueFrom:
-            secretKeyRef:
-              key: username
-              name: alex-brot-postgres-app
-        - name: DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              key: password
-              name: alex-brot-postgres-app
+          env:
+            - name: JDBC_URL
+              valueFrom:
+                secretKeyRef:
+                  key: jdbc-uri
+                  name: alex-brot-postgres-app
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: alex-brot-postgres-app
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: alex-brot-postgres-app
 ---
 apiVersion: v1
 kind: Service
