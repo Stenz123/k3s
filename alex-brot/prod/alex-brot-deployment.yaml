@@ -66,7 +66,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: alex-brot
+                name: alex-brot-backend
                 port:
                   number: 8080
   tls:
