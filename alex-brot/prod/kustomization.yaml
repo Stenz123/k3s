@@ -6,4 +6,4 @@ namespace: alex-brot
 resources:
 - namespace.yaml
 - postgres-cluster.yaml
-- alex-brot-backend.argo.yaml
+- alex-brot-deployment.yaml
