@@ -16,7 +16,7 @@ spec:
       containers:
         - name: alex-brot-backend
           image: ghcr.io/alex-brot/alex-brot-backend:v0.0.2
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
       env:
         - name: JDBC_URL
           valueFrom:
