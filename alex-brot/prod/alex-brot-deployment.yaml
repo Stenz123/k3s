@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alex-brot-backend-deployment
+  name: alex-brot-backend
   namespace: alex-brot
 spec:
   replicas: 1
@@ -51,10 +51,10 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: keycloak
+                name: alex-brot
                 port:
                   number: 8080
   tls:
-    - secretName: keycloak-tls
+    - secretName: alex-brot-backend-tls
       hosts:
         - backend.alex-brot.stenz.dev
