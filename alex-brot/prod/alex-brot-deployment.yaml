@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alex-brot-backend-deployment
+  namespace: alex-brot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alex-brot-backend
+  template:
+    metadata:
+      labels:
+        app: alex-brot-backend
+    spec:
+      containers:
+        - name: alex-brot-backend
+          image: ghcr.io/alex-brot/alex-brot-backend:v0.0.1
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alex-brot-backend
+  namespace: alex-brot
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: alex-brot-backend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak
+  namespace: keycloak
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+spec:
+  rules:
+    - host: backend.alex-brot.stenz.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: 8080
+  tls:
+    - secretName: keycloak-tls
+      hosts:
+        - backend.alex-brot.stenz.dev
