@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alex-brot-backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Stenz123/k3s/
+    path: alex-brot/prod
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
