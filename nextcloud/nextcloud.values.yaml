@@ -1,5 +1,10 @@
 nextcloud:
   host: nextcloud.stenz.dev
+  existingSecret:
+    enable: true
+    secretName: nextcloud-user-secret
+    userNameKey: username
+    passwordKey: password
 
 
 ingress:
