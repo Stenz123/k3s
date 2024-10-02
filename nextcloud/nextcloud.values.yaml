@@ -3,7 +3,7 @@ nextcloud:
   existingSecret:
     enable: true
     secretName: nextcloud-user-secret
-    userNameKey: username
+    usernameKey: username
     passwordKey: password
 
 
