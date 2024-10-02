@@ -1,0 +1,38 @@
+image:
+  tag: 6.1.0
+
+nextcloud:
+  host: nextcloud.stenz.dev
+
+
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: 'true'
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  hosts:
+    - host: nextcloud.stenz.dev
+      paths:
+        - '/'
+  tls:
+    - secretName: nextcloud-tls
+      hosts:
+        - nextcloud.stenz.dev
+
+internalDatabase:
+  enable: false
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-postgres-app
+    usernameKey: username
+    passwordKey: password
+    databaseKey: dbname
+    hostKey: host
+persistance:
+  enable: true
+  existingClame: nextcloud-pvc
