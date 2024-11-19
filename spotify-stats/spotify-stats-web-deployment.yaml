@@ -55,7 +55,7 @@ spec:
               service:
                 name: spotify-stats
                 port:
-                  number: 8080
+                  number: 3000
   tls:
     - secretName: spotify-stats-server-tls
       hosts:
