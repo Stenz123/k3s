@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: spotify-stats
 
 resources:
-- spotify-secret.yaml
 - spotify-stats-server-deployment.yaml
 - spotify-stats-web-deployment.yaml
 
