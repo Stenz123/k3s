@@ -8,7 +8,7 @@ resources:
 - spotify-stats-web-deployment.yaml
 
 helmCharts:
-- name: mongo
+- name: mongodb
   releaseName: mongodb
   repo: https://charts.bitnami.com/bitnami
   #valueFile: mongo.values.yaml
