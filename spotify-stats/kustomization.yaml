@@ -10,6 +10,5 @@ resources:
 helmCharts:
 - name: mongodb
   releaseName: mongodb
-  repo: https://charts.bitnami.com/bitnami
-  #valueFile: mongo.values.yaml
+  repository: "oci://registry-1.docker.io/bitnamicharts"
   version: 8.0.3
