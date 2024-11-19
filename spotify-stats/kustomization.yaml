@@ -10,5 +10,5 @@ resources:
 helmCharts:
 - name: mongodb
   releaseName: mongodb
-  repository: "oci://registry-1.docker.io/bitnamicharts"
+  repo: "oci://registry-1.docker.io/bitnamicharts"
   version: 8.0.3
