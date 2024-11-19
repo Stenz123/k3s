@@ -12,5 +12,5 @@ helmCharts:
 - name: mongo
   releaseName: mongodb
   repo: oci://registry-1.docker.io/bitnamicharts/mongodb
-  valueFile: mongo.values.yaml
+  #valueFile: mongo.values.yaml
   version: 8.0.3
