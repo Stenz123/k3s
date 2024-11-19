@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: spotify-stats
+
+resources:
+- spotify-secret.yaml
+- spotify-stats-server-deployment.yaml
+- spotify-stats-web-deployment.yaml
+
+helmCharts:
+- name: mongo
+  releaseName: mongodb
+  repo: oci://registry-1.docker.io/bitnamicharts/mongodb
+  valueFile: mongo.values.yaml
+  version: 8.0.3

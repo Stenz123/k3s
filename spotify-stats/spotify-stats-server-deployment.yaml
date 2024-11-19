@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spotify-stats-server
+  namespace: spotify-stats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spotify-stats-server
+  template:
+    metadata:
+      labels:
+        app: spotify-stats-server
+    spec:
+      containers:
+        - name: spotify-stats-server
+          image: yooooomi/your_spotify_server:1.11.0
+          imagePullPolicy: Always
+          env:
+            - name: API_ENDPOINT
+              value: https://api.spotify.stenz.dev
+            - name: CLIENT_ENDPOINT
+              value: https://spotify.stenz.dev
+            - name: SPOTIFY_PUBLIC
+              valueFrom:
+                secretKeyRef:
+                  key: public
+                  name: spotify-stats-secret
+            - name: SPOTIFY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: secret
+                  name: spotify-stats-secret
+            - name: CORS
+              value: https://spotify.stenz.dev
+            - name: TIMEZONE
+              value: Europe/Vienna
+            - name: MONGO_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  key:
+                  name: 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spotify-stats-server
+  namespace: spotify-stats
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: spotify-stats-server
+---
+apiVersion: networking.k8s.io/v1
+kind: spotify-stats-server
+metadata:
+  name: spotify-stats-server
+  namespace: spotify-stats
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+spec:
+  rules:
+    - host: api.spotify.stenz.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spotify-stats
+                port:
+                  number: 8080
+  tls:
+    - secretName: spotify-stats-server-tls
+      hosts:
+        - api.spotify.stenz.dev
+

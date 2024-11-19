@@ -2,3 +2,4 @@ cert-manager/cloudflare-token-secret.yaml
 keycloak/keycloak-secret.yaml
 nextcloud/nextcloud.secret.yaml
 backup
+spotify-stats/spotify-secret.yaml

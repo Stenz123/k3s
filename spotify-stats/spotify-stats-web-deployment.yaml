@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spotify-stats-web
+  namespace: spotify-stats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spotify-stats-web
+  template:
+    metadata:
+      labels:
+        app: spotify-stats-web
+    spec:
+      containers:
+        - name: spotify-stats-web
+          image: yooooomi/your_spotify_client:1.11.0
+          imagePullPolicy: Always
+          env:
+            - name: API_ENDPOINT
+              value: https://api.spotify.stenz.dev
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spotify-stats-web
+  namespace: spotify-stats
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: http
+  selector:
+    app: spotify-stats-web
+---
+apiVersion: networking.k8s.io/v1
+kind: spotify-stats-web
+metadata:
+  name: spotify-stats-web
+  namespace: spotify-stats
+  annotations:
+    spec.ingressClassName: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+spec:
+  rules:
+    - host: spotify.stenz.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: spotify-stats
+                port:
+                  number: 8080
+  tls:
+    - secretName: spotify-stats-server-tls
+      hosts:
+        - spotify.stenz.dev
+
