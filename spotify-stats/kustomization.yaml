@@ -11,4 +11,4 @@ helmCharts:
 - name: mongodb
   releaseName: mongodb
   repo: https://charts.bitnami.com/bitnami
-  version: 8.0.3
+  version: 16.3.0
