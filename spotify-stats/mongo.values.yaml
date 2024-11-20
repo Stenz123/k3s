@@ -16,7 +16,7 @@ arbiter:
   enabled: false
 auth:
   usernames: [spotify-stats]
-  passwords: []
+  passwords: [spotify-stats]
   databases: [spotify-stats]
   existingSecret: mongodb
 metrics:
