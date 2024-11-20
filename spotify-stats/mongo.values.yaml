@@ -1,6 +1,7 @@
 image:
   registry: ghcr.io
   repository: zcube/bitnami-compat/mongodb
+  tag: 6.0-debian-11-r64
 arbiter:
   resourcesPreset: medium
   architecture: replicaset
