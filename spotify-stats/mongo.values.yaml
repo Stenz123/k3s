@@ -1,6 +1,6 @@
 image:
   registry: ghcr.io
-  repository: zcube/bitnami-compat
+  repository: zcube/bitnami-compat/mongodb
 arbiter:
   resourcesPreset: medium
   architecture: replicaset
