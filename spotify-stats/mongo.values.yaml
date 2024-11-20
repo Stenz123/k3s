@@ -15,10 +15,11 @@ backup:
 arbiter:
   enabled: false
 auth:
-  usernames: [spotify-stats]
-  passwords: [spotify-stats]
-  databases: [spotify-stats]
-  existingSecret: mongodb
+  enabled: false
+  #usernames: [spotify-stats]
+  #passwords: [spotify-stats]
+  #databases: [spotify-stats]
+  #existingSecret: mongodb
 metrics:
   enabled: false
 
