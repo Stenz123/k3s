@@ -35,9 +35,9 @@ spec:
             - name: CORS
               value: https://spotify.stenz.dev
             - name: TIMEZONE
-              value: Europe/Vienna
-            - name: MONGO_ENDPOINT
-              value: mongodb://spotify-stats@mongodb.spotify-stats:27017/spotify-stats
+            value: Europe/Vienna
+          - name: MONGO_ENDPOINT
+            value: mongodb://spotify-stats:nVkW2tSOcZ15bV03uUBdKCgQyHjUproMoVacS28Opt@mongodb:27017/spotify-stats
 ---
 apiVersion: v1
 kind: Service
