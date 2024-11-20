@@ -71,7 +71,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: spotify-stats
+                name: spotify-stats-server
                 port:
                   number: 8080
   tls:
