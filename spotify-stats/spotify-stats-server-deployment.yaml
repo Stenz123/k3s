@@ -36,11 +36,8 @@ spec:
               value: https://spotify.stenz.dev
             - name: TIMEZONE
               value: Europe/Vienna
-           #- name: MONGO_ENDPOINT
-           #  valueFrom:
-           #    secretKeyRef:
-           #      key:
-           #      name: 
+            - name: MONGO_ENDPOINT
+              value: mongodb://spotify-stats:nVkW2tSOcZ15bV03uUBdKCgQyHjUproMoVacS28Opt@mongodb.spotify-stats.svc.cluster.local:27017/spotify-stats
 ---
 apiVersion: v1
 kind: Service
