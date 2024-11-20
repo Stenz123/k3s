@@ -1,7 +1,7 @@
 global:
   image:
-    registry: docker.io
-    repository: bitnami/mongodb
+    registry: ghcr.io
+    repository: zcube/bitnami-compat
 arbiter:
   resourcesPreset: medium
   architecture: replicaset
