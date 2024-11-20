@@ -4,6 +4,7 @@ image:
   tag: 6.0.5-debian-11-r64
   resourcesPreset: medium
   debug: true
+  pullPolicy: Always
 architecture: standalone
 #replicaCount: 3
 backup:
@@ -20,3 +21,8 @@ auth:
   existingSecret: mongodb
 metrics:
   enabled: false
+podSecurityContext:
+  fsGroup: 0
+containerSecurityContext:
+  runAsGroup: 0
+
