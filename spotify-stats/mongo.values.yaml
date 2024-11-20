@@ -3,6 +3,7 @@ image:
   repository: zcube/bitnami-compat/mongodb
   tag: 6.0.5-debian-11-r64
   resourcesPreset: medium
+  debug: true
 architecture: standalone
 #replicaCount: 3
 backup:
