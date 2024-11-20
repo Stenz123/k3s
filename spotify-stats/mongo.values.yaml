@@ -5,13 +5,13 @@ image:
   resourcesPreset: medium
   debug: true
   pullPolicy: Always
-architecture: standalone
-#replicaCount: 3
+architecture: replicaset
+replicaCount: 3
 backup:
   enabled: false
- #cronjob:
- #  storage:
- #    storageClass: storage-pool-big
+  cronjob:
+    storage:
+      storageClass: storage-pool-big
 arbiter:
   enabled: false
 auth:
@@ -21,8 +21,4 @@ auth:
   existingSecret: mongodb
 metrics:
   enabled: false
-podSecurityContext:
-  fsGroup: 0
-containerSecurityContext:
-  runAsGroup: 0
 
