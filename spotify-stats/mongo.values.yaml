@@ -18,5 +18,4 @@ auth:
   databases: [spotify-stats]
   existingSecret: mongodb
 metrics:
-  enabled: true
-  username: metrics
+  enabled: false
