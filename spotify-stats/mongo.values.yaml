@@ -1,8 +1,8 @@
 image:
   registry: ghcr.io
   repository: zcube/bitnami-compat/mongodb
-  tag: 6.0-debian-11-r64
-resourcesPreset: medium
+  tag: 6.0.5-debian-11-r64
+  resourcesPreset: medium
 architecture: standalone
 #replicaCount: 3
 backup:
