@@ -37,7 +37,7 @@ spec:
             - name: TIMEZONE
               value: Europe/Vienna
             - name: MONGO_ENDPOINT
-              value: mongodb://mongodb:27017/spotify-stats
+              value: mongodb://root:sQ9x7KnG5k2Cz8sELKmnqvhAmhyzSm54K9gAZzF7uSWbk05yff@mongodb:27017/spotify-stats
 ---
 apiVersion: v1
 kind: Service
