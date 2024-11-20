@@ -1,3 +1,7 @@
+global:
+  image:
+    registry: docker.io
+    repository: bitnami/mongodb
 arbiter:
   resourcesPreset: medium
   architecture: replicaset
