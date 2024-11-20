@@ -6,10 +6,10 @@ resourcesPreset: medium
 architecture: standalone
 #replicaCount: 3
 backup:
-  enabled: true
-  cronjob:
-    storage:
-      storageClass: storage-pool-big
+  enabled: false
+ #cronjob:
+ #  storage:
+ #    storageClass: storage-pool-big
 arbiter:
   enabled: false
 auth:
