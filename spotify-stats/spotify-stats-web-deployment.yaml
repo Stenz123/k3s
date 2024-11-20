@@ -57,7 +57,7 @@ spec:
                 port:
                   number: 3000
   tls:
-    - secretName: spotify-stats-server-tls
+    - secretName: spotify-stats-web-tls
       hosts:
         - spotify.stenz.dev
 
