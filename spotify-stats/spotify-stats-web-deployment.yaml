@@ -36,7 +36,7 @@ spec:
     app: spotify-stats-web
 ---
 apiVersion: networking.k8s.io/v1
-kind: spotify-stats-web
+kind: Ingress
 metadata:
   name: spotify-stats-web
   namespace: spotify-stats
