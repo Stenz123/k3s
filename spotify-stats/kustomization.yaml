@@ -11,5 +11,5 @@ helmCharts:
 - name: mongodb
   releaseName: mongodb
   repo: https://charts.bitnami.com/bitnami
-  version: 14.11.0
+  version: 14.11.1
   valuesFile: mongo.values.yaml
