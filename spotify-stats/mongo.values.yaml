@@ -2,22 +2,21 @@ image:
   registry: ghcr.io
   repository: zcube/bitnami-compat/mongodb
   tag: 6.0-debian-11-r64
+resourcesPreset: medium
+architecture: standalone
+replicaCount: 3
+backup:
+  enabled: true
+  cronjob:
+    storage:
+      storageClass: storage-pool-big
 arbiter:
-  resourcesPreset: medium
-  architecture: replicaset
-  replicaCount: 3
-  backup:
-    enabled: true
-    cronjob:
-      storage:
-        storageClass: storage-pool-big
-  arbiter:
-    enabled: false
-  auth:
-    usernames: [spotify-stats]
-    passwords: []
-    databases: [spotify-stats]
-    existingSecret: mongodb
-  metrics:
-    enabled: true
-    username: metrics
+  enabled: false
+auth:
+  usernames: [spotify-stats]
+  passwords: []
+  databases: [spotify-stats]
+  existingSecret: mongodb
+metrics:
+  enabled: true
+  username: metrics
