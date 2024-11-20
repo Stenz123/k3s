@@ -1,7 +1,6 @@
-global:
-  image:
-    registry: ghcr.io
-    repository: zcube/bitnami-compat
+image:
+  registry: ghcr.io
+  repository: zcube/bitnami-compat
 arbiter:
   resourcesPreset: medium
   architecture: replicaset
