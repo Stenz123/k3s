@@ -5,8 +5,8 @@ image:
   resourcesPreset: medium
   debug: true
   pullPolicy: Always
-architecture: replicaset
-replicaCount: 3
+architecture: standalone
+#replicaCount: 3
 backup:
   enabled: false
   cronjob:
