@@ -8,7 +8,7 @@ resources:
 
 helmCharts:
   - name: seaweedfs
-    releaseName: seaweedfs
+    releaseName: seaweedfs-release
     repo: https://charts.bitnami.com/bitnami
     valuesFile: seaweedfs.values.yaml
     version: 4.2.0
