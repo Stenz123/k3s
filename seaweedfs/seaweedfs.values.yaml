@@ -41,13 +41,12 @@ s3:
   replicaCount: 1
 
   auth:
-    enabled: false
-    existingSecret: ""
-    existingSecretConfigKey: ""
-    adminAccessKeyId: ""
-    adminSecretAccessKey: ""
-    readAccessKeyId: ""
-    readSecretAccessKey: ""
+    enabled: true
+    existingSecret: s3-auth-secret
+    existingSecretConfigKey: adminAccessKeyId
+    adminSecretAccessKey: adminSecretAccessKey
+    readAccessKeyId: readAccessKeyId
+    readSecretAccessKey: readSecretAccessKey
 
   ingress:
     enabled: true
