@@ -31,11 +31,10 @@ ingress:
                 port:
                   number: 9333
 
-
 s3:
   ## @param s3.enabled Enable Amazon S3 API deployment
   ##
-  enabled: true
+  enabled: false
   ## @param s3.replicaCount Number of Amazon S3 API replicas to deploy
   ##
   replicaCount: 1
