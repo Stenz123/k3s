@@ -40,9 +40,6 @@ s3:
   ##
   replicaCount: 1
   args:
-    - -logtostderr=true
-    - -v=1
-    - s3
     - -config=/my-secrets/config.json
   auth:
     enabled: true
