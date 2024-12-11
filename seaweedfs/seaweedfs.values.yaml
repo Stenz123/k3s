@@ -44,9 +44,6 @@ s3:
     - -v=1
     - s3
     - -config=/my-secrets/config.json
-    - -ip.bind=0.0.0.0
-    - -port=8333
-    - -port.grpc=18333
   auth:
     enabled: true
     existingSecret: "my-secret-integrations"
