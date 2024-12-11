@@ -42,12 +42,7 @@ s3:
 
   auth:
     enabled: true
-    existingSecret: s3-auth-secret
-    adminAccessKeyId: adminAccessKeyId
-    adminSecretAccessKey: adminSecretAccessKey
-    readAccessKeyId: readAccessKeyId
-    readSecretAccessKey: readSecretAccessKey
-
+    existingSecret: "my-secret-integrations"
   ingress:
     enabled: true
     pathType: Prefix

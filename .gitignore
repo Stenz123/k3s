@@ -5,3 +5,4 @@ nextcloud/nextcloud.secret.yaml
 backup
 spotify-stats/spotify.secrets.yaml
 spotify-stats/mongo.secrets.yaml
+seaweedfs/s3.secret.yaml
