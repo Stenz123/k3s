@@ -11,4 +11,4 @@ helmCharts:
     releaseName: seaweedfs
     repo: https://charts.bitnami.com/bitnami
     valuesFile: seaweedfs.values.yaml
-    version: 3.0.5
+    version: 3.1.0
