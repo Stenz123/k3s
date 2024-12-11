@@ -47,7 +47,6 @@ s3:
     - -ip.bind=0.0.0.0
     - -port=8333
     - -port.grpc=18333
-    - -filer=my-seaweedfs-filer:8888
   auth:
     enabled: true
     existingSecret: "my-secret-integrations"
