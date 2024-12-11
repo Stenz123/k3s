@@ -45,6 +45,8 @@ s3:
     existingSecret: s3-auth-secret
     adminAccessKeyId: adminAccessKeyId
     adminSecretAccessKey: adminSecretAccessKey
+    readAccessKeyId: readAccessKeyId
+    readSecretAccessKey: readSecretAccessKey
 
   ingress:
     enabled: true
