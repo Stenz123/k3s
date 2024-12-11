@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: seaweedfs
+
+resources:
+  - namespace.yaml
+
+helmCharts:
+  - name: seaweedfs
+    releaseName: seaweedfs
+    repo: https://charts.bitnami.com/bitnami
+    valuesFile: seaweedfs.values.yaml
+    version: 3.80.0

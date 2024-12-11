@@ -1,0 +1,77 @@
+master:
+  replicaCount: 1
+  containerPorts:
+    http: 9333
+    grpc: 19333
+    metrics: 9327
+ingress:
+  enabled: true
+  pathType: Prefix
+  apiVersion: networking.k8s.io/v1
+  hostname: seaweedfs.stenz.dev
+  ingressClassName: traefik
+  path: /
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  tls: true
+  extraTls:
+    - hosts:
+        - seaweedfs.stenz.dev
+      secretName: seaweedfs-tls
+  extraRules:
+    - host: seaweedfs.stenz.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: master-seaweedfs
+                port:
+                  number: 9333
+
+
+s3:
+  ## @param s3.enabled Enable Amazon S3 API deployment
+  ##
+  enabled: true
+  ## @param s3.replicaCount Number of Amazon S3 API replicas to deploy
+  ##
+  replicaCount: 1
+
+  auth:
+    enabled: false
+    existingSecret: ""
+    existingSecretConfigKey: ""
+    adminAccessKeyId: ""
+    adminSecretAccessKey: ""
+    readAccessKeyId: ""
+    readSecretAccessKey: ""
+
+  ingress:
+    enabled: true
+    pathType: Prefix
+    apiVersion: networking.k8s.io/v1
+    hostname: s3.seaweedfs.stenz.dev
+    ingressClassName: traefik
+    path: /
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+    tls: true
+    extraTls:
+      - hosts:
+          - s3.seaweedfs.stenz.dev
+        secretName: s3-seaweedfs-tls
+    extraRules:
+      - host: s3.seaweedfs.stenz.dev
+        http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: s3-seaweedfs
+                  port:
+                    number: 8333
