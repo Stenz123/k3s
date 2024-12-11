@@ -48,7 +48,7 @@ s3:
     - -port.grpc=18333
     - -filer=seaweedfs-filer:8888
   auth:
-    enabled: false
+    enabled: true
     existingSecret: "my-secret-integrations"
   extraVolumes:
     - name: "my-secrets"
@@ -62,7 +62,7 @@ s3:
     enabled: true
     pathType: Prefix
     apiVersion: networking.k8s.io/v1
-    hostname: s3.seaweedfs.stenz.dev
+    hostname: s3.stenz.dev
     ingressClassName: traefik
     path: /
     annotations:
@@ -71,10 +71,10 @@ s3:
     tls: true
     extraTls:
       - hosts:
-          - s3.seaweedfs.stenz.dev
+          - s3.stenz.dev
         secretName: s3-seaweedfs-tls
     extraRules:
-      - host: s3.seaweedfs.stenz.dev
+      - host: s3.stenz.dev
         http:
           paths:
             - path: /
