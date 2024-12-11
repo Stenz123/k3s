@@ -6,12 +6,6 @@ image:
   debug: true
   pullPolicy: Always
 architecture: standalone
-#replicaCount: 3
-backup:
-  enabled: false
-  cronjob:
-    storage:
-      storageClass: storage-pool-big
 arbiter:
   enabled: false
 auth:
