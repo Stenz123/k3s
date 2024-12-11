@@ -9,6 +9,6 @@ resources:
 helmCharts:
   - name: seaweedfs
     releaseName: seaweedfs
-    repo: oci://registry-1.docker.io/bitnamicharts
+    repo: https://charts.bitnami.com/bitnami
     valuesFile: seaweedfs.values.yaml
     version: 3.80.0
