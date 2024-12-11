@@ -34,7 +34,7 @@ ingress:
 s3:
   ## @param s3.enabled Enable Amazon S3 API deployment
   ##
-  enabled: false
+  enabled: true
   ## @param s3.replicaCount Number of Amazon S3 API replicas to deploy
   ##
   replicaCount: 1
@@ -48,7 +48,7 @@ s3:
     - -port.grpc=18333
     - -filer=seaweedfs-filer:8888
   auth:
-    enabled: true
+    enabled: false
     existingSecret: "my-secret-integrations"
   extraVolumes:
     - name: "my-secrets"
