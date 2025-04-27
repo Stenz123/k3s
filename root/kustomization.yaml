@@ -5,3 +5,6 @@ resources:
   #- https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.23/releases/cnpg-1.23.1.yaml
 - namespaces.yaml
 - https-middleware.yaml
+
+patchesStrategicMerge:
+  - traefik-service-patch.yaml
