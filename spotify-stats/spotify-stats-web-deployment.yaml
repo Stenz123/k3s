@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: spotify-stats-web
-          image: yooooomi/your_spotify_client:1.13.0
+          image: yooooomi/your_spotify_client:1.13.1
           imagePullPolicy: Always
           env:
             - name: API_ENDPOINT
