@@ -12,4 +12,4 @@ helmCharts:
   releaseName: vaultwarden
   repo: https://gissilabs.github.io/charts/
   valuesFile: vaultwarden.values.yaml
-  version: 1.2.5
+  version: 1.2.6
