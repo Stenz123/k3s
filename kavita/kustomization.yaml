@@ -8,4 +8,4 @@ helmCharts:
   releaseName: kavita
   repo: oci://oci.trueforge.org/truecharts
   valuesFile: kavita.values.yaml
-  version: 1.0.0
+  version: 12.12.3
