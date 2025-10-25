@@ -25,7 +25,6 @@ persistence:
     mountPath: "/manga"
   tmp:
     enabled: false
-
 ingress:
   main:
     enabled: true
@@ -35,13 +34,13 @@ ingress:
     ingressClassName: "traefik"
     hosts:
       - host: kavita.stenz.dev
-          paths:
-            - path: /
-              pathType: Prefix
-              overrideService:
-                name: kavita
-                port: 5000
-    tls: 
+        paths:
+          - path: /
+            pathType: Prefix
+            overrideService:
+              name: kavita
+              port: 5000
+    tls:
       - secretName: spotify-stats-web-tls
         hosts:
           - kavita.stenz.dev
@@ -54,5 +53,6 @@ ingress:
         entrypoints:
           - websecure
         forceTLS: true
-        middlewares: 
-                - name: default-redirect-https@kubernetescrd
+        middlewares:
+          - name: default-redirect-https@kubernetescrd
+
