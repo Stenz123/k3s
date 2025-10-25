@@ -6,6 +6,6 @@ namespace: kavita
 helmCharts:
 - name: kavita
   releaseName: kavita
-  repo: oci://oci.trueforge.org/truecharts/kavita
+  repo: https://trueforge.org/
   valuesFile: kavita.values.yaml
   version: 0.8.8
