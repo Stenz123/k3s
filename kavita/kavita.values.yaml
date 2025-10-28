@@ -51,9 +51,9 @@ ingress:
         entrypoints:
           - websecure
         forceTLS: true
-        middlewares:
-          - name: redirect-https
-            namespace: default
+#       middlewares:
+#         - name: redirect-https
+#           namespace: default
 
 podOptions:
   nodeSelector:
