@@ -3,4 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: kavita-manga
   namespace: kavita
-spec: {}
+spec:
+  storageClassName: local-path
+  volumeMode: Filesystem

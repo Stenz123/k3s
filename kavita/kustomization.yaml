@@ -12,3 +12,4 @@ helmCharts:
 
 patchesStrategicMerge:
   - pvc-kavita-manga.patch.yaml
+  - pvc-kavita-config.patch.yaml
