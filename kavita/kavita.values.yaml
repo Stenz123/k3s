@@ -3,7 +3,8 @@ global:
 image:
   repository: ghcr.io/kareadita/kavita
   pullPolicy: IfNotPresent
-  tag: 0.8.8@sha256:22c42f3cc83fb98b98a6d6336200b615faf2cfd2db22dab363136744efda1bb0
+  # arm version
+  tag: 0.8.8@sha256:549f18ee57dae4c0919aa785642d4d8202937cf03ea854f23e990289fb2ac302
 securityContext:
   container:
     readOnlyRootFilesystem: false
