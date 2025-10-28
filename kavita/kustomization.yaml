@@ -9,3 +9,6 @@ helmCharts:
   repo: oci://oci.trueforge.org/truecharts
   valuesFile: kavita.values.yaml
   version: 12.12.3
+
+patchesStrategicMerge:
+  - pvc-kavita-manga.patch.yaml
