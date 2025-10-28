@@ -59,4 +59,5 @@ ingress:
             namespace: default
 
 podOptions:
-  nodeSelector: {}
+  nodeSelector:
+    kubernetes.io/arch: "arm64"
