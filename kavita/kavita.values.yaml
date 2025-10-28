@@ -57,3 +57,5 @@ ingress:
           - name: redirect-https
             namespace: default
 
+podOptions:
+  defaultAffinity: false
