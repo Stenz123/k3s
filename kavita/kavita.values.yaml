@@ -54,5 +54,6 @@ ingress:
           - websecure
         forceTLS: true
         middlewares:
-          - name: default-redirect-https@kubernetescrd
+          - name: redirect-https
+            namespace: default
 
