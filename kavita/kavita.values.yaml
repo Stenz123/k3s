@@ -60,3 +60,4 @@ ingress:
 
 podOptions:
   defaultAffinity: false
+  nodeSelector: {}
