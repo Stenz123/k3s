@@ -16,7 +16,7 @@ service:
     ports:
       main:
         targetPort: 5000
-        port: 5000
+        port: 10189
 persistence:
   config:
     enabled: true
@@ -38,9 +38,6 @@ ingress:
         paths:
           - path: /
             pathType: Prefix
-            overrideService:
-              name: kavita
-              port: 5000
     tls:
       - secretName: spotify-stats-web-tls
         hosts:
