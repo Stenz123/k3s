@@ -31,7 +31,7 @@ ingressRoute:
   host: "vaultwarden.stenz.dev"
   entrypoints:
     - websecure
-  middlewares: {}
+  middlewares: []
   tls:
     secretName: vaultwarden-tls
 replicaCount: 1
